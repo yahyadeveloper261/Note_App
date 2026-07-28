@@ -1,18 +1,20 @@
 import React,{forwardRef} from 'react'
 
- export default function Dashboard({notes,dark, setPriorityFilter,archiveMode,setArchiveMode,setPinned,ref}){
+ export default function Dashboard({notes,dark, setPriorityFilter,archiveMode,setArchiveMode,setPinnedFilter,ref}){
   return (
    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-6">
 
   {/* Total Notes */}
   <div 
- onClick={() => {
-  setArchiveMode(null);
-  ref.current?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-}} 
+onClick={()=>{
+ setPinnedFilter(false);
+ setPriorityFilter("all");
+ setArchiveMode(null);
+ref.current?.scrollIntoView({
+   behavior:"smooth",
+   block:"start"
+})
+}}
     className={`cursor-pointer  rounded-2xl p-5 shadow-lg border transition-all ${
       dark
         ? "bg-gray-800 border-gray-700"
@@ -33,9 +35,14 @@ import React,{forwardRef} from 'react'
 
   {/* Archived */}
   <div
-   onClick={() => {setArchiveMode(!archiveMode);ref.current?.scrollIntoView({
-    behavior:"smooth",block:"start"
-   })}}
+  onClick={()=>{
+ setPinnedFilter(false);
+ setPriorityFilter("all");
+ setArchiveMode(true);
+ ref.current?.scrollIntoView({
+  behavior:"smooth",block:"start"  
+ })
+}}
     className={`cursor-pointer rounded-2xl p-5 shadow-lg border transition-all ${
       dark
         ? "bg-gray-800 border-gray-700"
@@ -52,7 +59,15 @@ import React,{forwardRef} from 'react'
   </div>
 
   {/* Pinned */}
-  <div onClick={()=>setPinned(true)}
+  <div onClick={()=>{
+ setPinnedFilter(true);
+ setPriorityFilter("all");
+ setArchiveMode(null);
+
+ ref.current?.scrollIntoView({
+  behavior:"smooth",block:"start"  
+ })
+}}
     className={` cursor-pointer rounded-2xl p-5 shadow-lg border transition-all ${
       dark
         ? "bg-gray-800 border-gray-700"
@@ -69,7 +84,16 @@ import React,{forwardRef} from 'react'
   </div>
 
   {/* High Priority */}
-  <div onClick={()=>setPriorityFilter("high")}
+  <div onClick={()=>{
+ setPinnedFilter(false);
+ setPriorityFilter("high");
+ setArchiveMode(null);
+ ref.current?.scrollIntoView({
+  behavior:"smooth",block:"start"  
+ })
+}}
+
+    
     className={` cursor-pointer  rounded-2xl p-5 shadow-lg border transition-all ${
       dark
         ? "bg-gray-800 border-gray-700"

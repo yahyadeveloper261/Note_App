@@ -21,6 +21,7 @@ export default function NoteApp() {
     const [priority,setPriority]=useState("medium");
     const [priorityFilter,setPriorityFilter]=useState("all");
     const [sortBy,setSortBy]=useState("all")
+    const [pinnedFilter,setPinnedFilter]=useState(false);
 
 
     const [dark,setDark]=useState(()=>{
@@ -128,7 +129,7 @@ setEditNotes(null);
 
 
     const SortedNotes=[...notes].sort((a,b)=>sortBy==="all"?0:sortBy==="a-z"?a.title.localeCompare(b.title):sortBy==="z-a"?b.title.localeCompare(a.title):sortBy==="priority"?SortedOrder[a.priority]-SortedOrder[b.priority]:new Date(b.date)-new Date(a.date)).filter(prev=>priorityFilter==="all"?true:prev.priority===priorityFilter)
-    .filter(prev=>archiveMode===null?true:archiveMode?prev.archive:!prev.archive).filter(prev=>prev.title.toLowerCase().includes(search.toLowerCase())||
+    .filter(prev=>archiveMode===null?true:archiveMode?prev.archive:!prev.archive).filter(prev=>pinnedFilter?prev.pinned:true).filter(prev=>prev.title.toLowerCase().includes(search.toLowerCase())||
 prev.discription.toLowerCase().includes(search.toLowerCase()));
 
 const togglepin=(id)=>{
@@ -161,9 +162,9 @@ const toggleArchive=(id)=>{
    }
    search={search} searchToggle={(e)=>setSearch(e.target.value)}
     archiveMode={archiveMode} setArchiveMode={setArchiveMode} />
-<Dashboard notes={notes}  dark={dark}  setNotes={setNotes} 
+<Dashboard notes={notes}  dark={dark}  
 archiveMode={archiveMode} setArchiveMode={setArchiveMode} 
-setPriorityFilter={setPriorityFilter} setPinned={setPinned} ref={NoteRef}/>
+setPriorityFilter={setPriorityFilter} setPinnedFilter={setPinnedFilter} ref={NoteRef}/>
 <Category_Dashboard notes={notes} dark={dark} />
        <NoteForm 
        title={title} 
