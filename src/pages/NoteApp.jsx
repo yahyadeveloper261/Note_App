@@ -201,7 +201,7 @@ date={date}
 
 
 <NoteCard notes={SortedNotes} dark={dark} editBtn={edit} delBtn={delbtn} 
-pinned={pinned} setPinned={togglepin}  setArchive={toggleArchive}  archiveMode={archiveMode} />
+pinned={pinned} setPinned={togglepin}  setArchive={toggleArchive}  archiveMode={archiveMode} ref={InputRef} />
 </div>
     </div>
   )
