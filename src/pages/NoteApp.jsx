@@ -9,6 +9,8 @@ import Category_Dashboard from '../components/Category_Dashboard';
 export default function NoteApp() {
     const InputRef=useRef(null);
     const NoteRef=useRef(null);
+     
+ 
    
     const [title,setTitle]=useState("");
     const [discription,setDiscription]=useState("");
@@ -152,16 +154,23 @@ const toggleArchive=(id)=>{
         
 }
 
+useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
+
 
 
   return (
   <div className="w-[90%] mx-auto">
         <Navbar 
+         NoteRef={NoteRef} 
         dark={dark}
    toggledark={()=>setDark(!dark)
+  
    }
+   setArchiveMode={setArchiveMode} archiveMode={archiveMode}
    search={search} searchToggle={(e)=>setSearch(e.target.value)}
-    archiveMode={archiveMode} setArchiveMode={setArchiveMode} />
+   />
 <Dashboard notes={notes}  dark={dark}  
 archiveMode={archiveMode} setArchiveMode={setArchiveMode} 
 setPriorityFilter={setPriorityFilter} setPinnedFilter={setPinnedFilter} ref={NoteRef}/>

@@ -1,9 +1,10 @@
 
-import React,{forwardRef, useRef} from "react";
+import React,{forwardRef} from "react";
+
+
 
 const NoteCard=forwardRef(function NoteCard({ notes, dark ,delBtn,editBtn,setPinned,setArchive,archiveMode},ref) {
 
-    const archived=notes.filter(prev=>prev.archive===false)
 
   return (
    <div className="w-full mt-8">
