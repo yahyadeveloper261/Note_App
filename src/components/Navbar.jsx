@@ -8,7 +8,6 @@ export default function Navbar({
   searchToggle,
   archiveMode,
   setArchiveMode,
-
 }) {
   return (
     <nav
@@ -17,7 +16,6 @@ export default function Navbar({
       }`}
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
-
         {/* Logo + Title */}
         <div className="flex items-center gap-1 sm:gap-2">
           <img
@@ -31,24 +29,20 @@ export default function Navbar({
           </h2>
         </div>
 
-
         {/* Buttons */}
         <div className="flex items-center gap-1 sm:gap-3">
           <button
-       
-            
-onClick={() => {
-  const next = !archiveMode;
-  setArchiveMode(next);
+            onClick={() => {
+              const next = !archiveMode;
+              setArchiveMode(next);
 
-  setTimeout(() => {
-    NoteRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 0);
-}}
-
+              setTimeout(() => {
+                NoteRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }, 0);
+            }}
             className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-base font-medium text-white ${
               archiveMode
                 ? "bg-blue-600 hover:bg-blue-700"
@@ -58,29 +52,24 @@ onClick={() => {
             {archiveMode === null
               ? "All"
               : archiveMode
-              ? "📒 Notes"
-              : "📥 Archive"}
+                ? "📒 Notes"
+                : "📥 Archive"}
           </button>
-
 
           <button
             onClick={toggledark}
             className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full ${
-              dark
-                ? "bg-white text-black"
-                : "bg-gray-600 text-white"
+              dark ? "bg-white text-black" : "bg-gray-600 text-white"
             }`}
           >
             {dark ? "🌞" : "🌙"}
           </button>
         </div>
 
-
         {/* Search */}
         <div className="w-full order-3">
           <input
             type="text"
-          
             placeholder="Search a Note..."
             value={search}
             onChange={searchToggle}
@@ -91,7 +80,6 @@ onClick={() => {
             }`}
           />
         </div>
-
       </div>
     </nav>
   );

@@ -1,21 +1,18 @@
-import React from 'react'
+import React from "react";
 
 export default function Filters({
   priorityFilter,
   setPriorityFilter,
   sortBy,
   setSortBy,
-  dark
+  dark,
 }) {
   return (
     <div
       className={`flex flex-col sm:flex-row gap-4 mt-6 p-4 rounded-xl shadow-md ${
-        dark
-          ? "bg-gray-800"
-          : "bg-white"
+        dark ? "bg-gray-800" : "bg-white"
       }`}
     >
-
       {/* Priority Filter */}
       <select
         value={priorityFilter}
@@ -31,7 +28,6 @@ export default function Filters({
         <option value="medium">🟡 Medium</option>
         <option value="low">🟢 Low</option>
       </select>
-
 
       {/* Sort Filter */}
       <select
@@ -49,7 +45,6 @@ export default function Filters({
         <option value="z-a">z-a</option>
         <option value="date">📅 Sort By Date</option>
       </select>
-
     </div>
-  )
+  );
 }
